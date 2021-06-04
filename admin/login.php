@@ -36,6 +36,7 @@
         if( mysqli_num_rows( $MySQL ) > 0 )
         {
             $_SESSION['LoginID'] = $res['user_name'];
+            $_SESSION['LoginRole'] = $res['user_role'];
             $_SESSION['ID'] = $res['user_id'];
             header('location: index.php');
         }else

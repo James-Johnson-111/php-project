@@ -50,6 +50,13 @@
 
             if( $MySQL )
             {
+                $query = "SELECT * FROM users WHERE user_name = '$SiteName' AND user_password = '$Pass'";
+                $MySQL = mysqli_query($connection, $query) or die('Query failed');
+                $res = mysqli_fetch_assoc($MySQL);
+                
+                $_SESSION['LoginID'] = $res['user_name'];
+                $_SESSION['LoginRole'] = $res['user_role'];
+                $_SESSION['ID'] = $res['user_id'];
                 header('location: index.php');
             }else
             {

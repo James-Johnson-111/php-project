@@ -65,8 +65,8 @@ $res = mysqli_query($connection, $query);
                         ?>
                             <div class="row post w-100 mb-5" style="font-size: 12px;" id="posts">
                                 <div class="actionBtns">
-                                    <button class="btn btn-sm" onclick="edit()"><i class="lar la-edit"></i></button>
-                                    <a href="/admin/delete_post.php/<?php echo $row['post_id'] ?>"><button class="btn btn-sm"><i class="las la-trash-alt"></i></button></a>
+                                    <a href="/admin/view_product.php?id=<?php echo $row['post_id'] ?>"><button class="btn btn-sm"><i class="lar la-edit"></i></button></a>
+                                    <a href="/admin/delete_post.php?id=<?php echo $row['post_id'] ?>"><button class="btn btn-sm"><i class="las la-trash-alt"></i></button></a>
                                 </div>
                                 <div class="col-2 px-1 d-flex justify-content-center align-items-center">
                                     <img id="post_img" src="../images/<?php echo $row['post_image'] ?>" width="100%" />
@@ -106,22 +106,33 @@ $res = mysqli_query($connection, $query);
                                 </div>
                             </form>
                         </div>
-                        <div class="edit_post"></div>
+                        <div class="edit_post">
+                            <?php
+                                if ( isset($_GET['id']) )
+                                {
+                                    $id = $_GET['id'];
+                                    $getThatPost = "SELECT posts.*, users.user_first_name, users.user_last_name from posts LEFT OUTER JOIN users ON posts.post_auther = users.user_id WHERE posts.post_id = " . $id . "";
+                                    $singlePost = mysqli_query( $connection, $getThatPost );
+                                    $Post = mysqli_fetch_assoc( $singlePost );
+                                    ?>
+                                        <div class="mb-3 editImg" style="background-image: url('../images/<?php echo $Post['post_image']; ?>'); background-size: 100% 100%;">
+                                            <div class="cameraIcon">
+                                                <i class="las la-camera la-2x"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm rounded-0 mb-2" placeholder="New Title" value="<?php echo $Post['post_title']; ?>" />
+                                        <input type="text" class="form-control form-control-sm rounded-0 mb-2" placeholder="New Description" value="<?php echo $Post['post_desc']; ?>" />
+                                        <button class="btn btn-sm btn-block rounded-0" style="background-color: #F75454; color: #ffffff;">Update</button>
+                                    <?php
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Main Div is end here -->
-    <script>
-        function edit() {
-            let post = document.getElementById('posts');
-            let title = query;
-
-            let content = "<h1>" + title + "</h1>";
-            $('.edit_post').html(content);
-        }
-    </script>
 
 </body>
 

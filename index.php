@@ -168,7 +168,7 @@
         </div>
 
         <?php
-        $q = "SELECT posts.*, users.user_first_name, users.user_last_name from posts LEFT OUTER JOIN users ON posts.post_auther = users.user_id WHERE posts.post_section = 1 GROUP BY posts.post_id DESC";
+        $q = "SELECT posts.*, users.user_first_name, users.user_last_name from posts LEFT OUTER JOIN users ON posts.post_auther = users.user_id WHERE posts.post_section = 1 GROUP BY posts.post_id DESC LIMIT 4";
         $res = mysqli_query($connection, $q);
         ?>
         <div class="container-fluid px-0 mt-4">
@@ -184,7 +184,7 @@
                             <div>
                                 <p class="mb-0" style="color: #f9ad45;"><?php echo substr($row['post_date'], 0, 10) ?></p>
                                 <p class="text-justify">
-                                    <?php if ( strlen($row['post_desc']) > 55 ) { echo substr($row['post_desc'], 0, 52) . ' ...'; }else { $row['post_desc']; } ?>
+                                    <?php if ( strlen($row['post_desc']) > 55 ) { echo substr($row['post_desc'], 0, 52) . ' ...'; }else { echo $row['post_desc']; } ?>
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center mb-0 pb-0">
                                     <p class="text-secondary mb-0 pb-0"><?php echo $row['user_first_name'] . ' ' . $row['user_last_name'] ?></p>

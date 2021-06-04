@@ -63,7 +63,7 @@ $res = mysqli_fetch_assoc(mysqli_query($connection, $query));
                                 <input type="text" name="Title" class="form-control rounded-0 mr-1" placeholder="Title" />
                                 <input type="text" name="Auther" class="form-control rounded-0 ml-1" placeholder="Auther" value="<?php echo $res['user_first_name'] . ' ' . $res['user_last_name'] ?>" readonly />
                             </div>
-                            <textarea name="Desc" class="form-control rounded-0 mb-3" placeholder="Some Description" style="height: 100px;"></textarea>
+                            <textarea minlength="50" name="Desc" class="form-control rounded-0 mb-3" placeholder="Some Description" style="height: 100px;"></textarea>
                             <input name="image" type="file" class="form-control rounded-0" id="imgUpload" />
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
