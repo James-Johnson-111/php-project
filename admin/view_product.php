@@ -55,7 +55,12 @@ $res = mysqli_query($connection, $query);
                 <div class="row">
                     <div class="col-lg-8 col-md-6 col-sm-12 post_section py-5">
                         <?php
+                        if (isset($_POST['startSearch'])) {
+                            $Skeyword = $_POST['search'];
+                            $search = "SELECT posts.*, users.user_first_name, users.user_last_name FROM posts LEFT OUTER JOIN users ON posts.post_auther = users.user_id WHERE posts.post_title LIKE '" . $Skeyword . "%' || posts.post_desc LIKE '%" . $Skeyword . "%' || posts.post_auther = '" . $Skeyword . "'";
 
+                            $res = mysqli_query($connection, $search);
+                        }
                         while ($row = mysqli_fetch_array($res)) {
                         ?>
                             <div class="row post w-100 mb-5" style="font-size: 12px;" id="posts">
@@ -67,9 +72,9 @@ $res = mysqli_query($connection, $query);
                                     <img id="post_img" src="../images/<?php echo $row['post_image'] ?>" width="100%" />
                                 </div>
                                 <div class="col-10 d-flex justify-content-start align-items-center">
-                                    <div>
+                                    <div class="w-100">
                                         <h5 class="post_title" id="title"><?php echo $row['post_title'] ?></h5>
-                                        <div class="row p-0 px-3">
+                                        <div class="row p-0 m-0 w-100">
                                             <div class="col-6 p-0">
                                                 <p class="mb-0 font-weight-bold post_auther" id="auther">
                                                     <?php echo $row['user_first_name'] . " " . $row['user_last_name'] ?>
@@ -94,10 +99,12 @@ $res = mysqli_query($connection, $query);
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12" style="font-size: 12px;">
                         <div class="row w-100 ml-2">
-                            <div class="col-12 btn-group mb-3 px-0">
-                                <input type="search" class="form-control rounded-0 border-right-0" placeholder="Search Here" />
-                                <button class="btn rounded-0 border"><i class="las la-search"></i></button>
-                            </div>
+                            <form action="" method="POST">
+                                <div class="col-12 btn-group mb-3 px-0">
+                                    <input type="search" name="search" class="form-control rounded-0 border-right-0" placeholder="Search Here" />
+                                    <button class="btn rounded-0 border" name="startSearch"><i class="las la-search"></i></button>
+                                </div>
+                            </form>
                         </div>
                         <div class="edit_post"></div>
                     </div>
@@ -107,8 +114,7 @@ $res = mysqli_query($connection, $query);
     </div>
     <!-- Main Div is end here -->
     <script>
-        function edit()
-        {
+        function edit() {
             let post = document.getElementById('posts');
             let title = query;
 
