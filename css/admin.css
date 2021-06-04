@@ -1,0 +1,225 @@
+/* width */
+
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 50px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 50px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0, .6);
+    border-radius: 50px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0, .7);
+    cursor: grab;
+}
+
+.admin {
+    font-family: Poppins;
+    background-color: #ecedf3;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.AuthPage {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('https://image.freepik.com/free-photo/landscape-hills-cloudy-sky_130488-474.jpg');
+    background-size: 100% 100%;
+    animation: zoomInOut 20s linear infinite forwards alternate-reverse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+}
+
+@keyframes zoomInOut {
+    50% {
+        background-size: 110% 110%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
+.AuthPage .AuthForm {
+    width: 30%;
+    height: min-content;
+    background-color: rgb(0, 0, 0, .5);
+    border-radius: 20px;
+    color: #ffffff;
+    padding: 20px 30px;
+}
+
+.AuthPage .AuthForm .form-control {
+    background: none;
+    border-radius: 30px;
+    color: rgb(255, 255, 255);
+    padding: 8px 20px;
+    border: #ffffff 1.5px solid;
+    font-family: Poppins;
+}
+
+.AuthPage .AuthForm .form-control::placeholder {
+    color: rgb(255, 255, 255, .5);
+}
+
+.AuthPage .AuthForm .form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #F75454;
+}
+
+.AuthPage .AuthForm select option {
+    color: #000000;
+}
+
+.AuthPage .AuthForm .btn {
+    background: #F75454;
+    border: #F75454 1.5px solid;
+    color: #ffffff;
+    border-radius: 30px;
+    width: 50%;
+    transition: .5s;
+}
+
+.AuthPage .AuthForm .btn:hover {
+    background: none;
+    border: 1.5px solid #F75454;
+}
+
+.topBar {
+    width: 100%;
+    background-color: #F75454;
+    padding: 0 50px;
+    font-family: Poppins;
+}
+
+.topBar a {
+    color: #ffffff;
+    transition: .5s;
+    padding: 20px;
+    display: block;
+}
+
+.topBar a:hover {
+    color: #ffffff;
+    background-color: #ffffff;
+    color: #F75454;
+}
+
+@media only screen and (max-width: 600px) {
+    .topBar {
+        padding: 0 10px;
+    }
+}
+
+.main-content {
+    width: 100%;
+    height: calc( 100vh - 104px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content .backDesign {
+    width: 70%;
+    min-height: 200px;
+    background-image: linear-gradient( 130deg, transparent 50%, #fff 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content .backDesign h1 {
+    font-size: 55px;
+}
+
+.product-content {
+    width: 70%;
+    background-color: #ffffff;
+    height: min-content;
+    padding: 30px;
+}
+
+.product-content .form-control {
+    border: 1px solid #ecedf3;
+}
+
+.product-content .form-control:focus {
+    box-shadow: none;
+    border: 1px solid lightgrey;
+}
+
+.image_preview {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid #ecedf3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: grey;
+    overflow: hidden;
+}
+
+.image_preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.post_section {
+    max-height: 500px;
+    min-height: max-content;
+    overflow: auto;
+}
+
+.post {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    padding: 30px;
+    position: relative;
+}
+
+.post .actionBtns {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: .3s;
+    opacity: 0;
+}
+
+.post:hover .actionBtns {
+    opacity: 1;
+}
+
+.post .actionBtns .btn {
+    transition: .5s;
+    color: #000000;
+}
+
+.post .actionBtns .btn:hover {
+    background-color: #ecedf3;
+}
+
+.post .actionBtns .btn:focus {
+    border: 1px transparent #ffff;
+    box-shadow: none;
+}
